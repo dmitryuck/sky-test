@@ -1,10 +1,10 @@
-import Film from '../../server/interfaces/Film';
+import Category from '../../server/interfaces/Category';
 
 
 export default interface AppState {
-  films: Film[];
+  /*films: Category[];
   page: number;
   total: number;
   loading: boolean;
-  message: string;
+  message: string;*/
 }

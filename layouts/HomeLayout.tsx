@@ -1,13 +1,9 @@
 import Home from './home/Home';
 
-
-interface Props {
-}
+interface Props {}
 
 const HomeLayout = (props: Props) => {
-  return (
-    <Home />
-  );
+  return <Home />;
 };
 
 export default HomeLayout;

@@ -1,54 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col, Container } from 'react-bootstrap';
-import Film from '../../server/interfaces/Film';
-import FilmCard from './FilmCard/FilmCard';
+import CategoryCard from './CategoryCard/CategoryCard';
 import Pagination from '../shared/Pagination';
-import {
-  getFilms,
-  getLoading,
-  getMessage,
-  getPage,
-  getTotal,
-} from '../../redux/selectors/AppSelectors';
 import AppActions from '../../redux/actions/AppActions';
 import styles from './Home.scss';
+import { getRequest } from '../../client/PageUtils';
+import ServerApi from '../../server/enums/ServerApi';
 
 const Home = () => {
   const dispatch = useDispatch();
 
-  const films = useSelector(getFilms);
-  const loading = useSelector(getLoading);
-  const message = useSelector(getMessage);
-  const page = useSelector(getPage);
-  const total = useSelector(getTotal);
+  const [categories, setCategories] = useState([]);
 
-  const renderFilms = () =>
-    films?.map((film: Film, index: number) => (
-      <FilmCard key={index} data={film} />
+  useEffect(() => {
+    setTimeout(async () => {
+      const [fetchError, fetchResult] = await getRequest(
+        ServerApi.FETCH_CATEGORIES
+      );
+
+      if (fetchResult) {
+        setCategories(
+          Object.keys(fetchResult).map((key) => ({
+            name: key,
+            url: fetchResult[key],
+          }))
+        );
+      }
+    });
+  }, []);
+
+  const renderCategories = () =>
+    categories?.map((category: any, index: number) => (
+      <CategoryCard key={index} category={category} />
     ));
-
-  const onPageChanged = (page: number) => {
-    dispatch(AppActions.setPage(page));
-  };
 
   return (
     <Container className={styles.gridContainer}>
       <Row>
         <Col xs={12}>
-          <div className={styles.homeContainer}>
-            {renderFilms()}
-            {message && <span>{message}</span>}
-            {loading && <span>Loading...</span>}
-          </div>
-
-          <Pagination
-            currentPage={page}
-            totalRecords={total}
-            pageLimit={10}
-            pageNeighbours={1}
-            onPageChanged={onPageChanged}
-          />
+          <div className={styles.homeContainer}>{renderCategories()}</div>
         </Col>
       </Row>
     </Container>

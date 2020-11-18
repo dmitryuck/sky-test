@@ -4,16 +4,16 @@ import Action from '../include/Action';
 
 
 const initialState: AppState = {
-  films: [],
+  /*films: [],
   page: 1,
   total: 0,
   loading: false,
-  message: '',
+  message: '',*/
 }
 
 export default function appStateReducer(state: AppState = initialState, action: Action) {
   switch (action.type) {
-    case AppActions.SET_FILMS: {
+    /*case AppActions.SET_FILMS: {
       return Object.assign({}, state, { films: action.payload });
     }
 
@@ -31,7 +31,7 @@ export default function appStateReducer(state: AppState = initialState, action: 
 
     case AppActions.SET_MESSAGE: {
       return Object.assign({}, state, { message: action.payload });
-    }
+    }*/
 
     default: return state;
   }
