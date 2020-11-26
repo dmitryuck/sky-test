@@ -14,4 +14,8 @@ export default class ApiService {
   static async searchDataForCategory(category: string, search: string) {
     return await getExtRequest(`${Const.API_URL}${category}/?search=${search}`);
   }
+
+  static async fetchDataForItem(category: string, name: string) {
+    return await getExtRequest(`${Const.API_URL}${category}/?search=${name}`);
+  }
 }

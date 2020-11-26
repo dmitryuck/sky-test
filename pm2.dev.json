@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "Filmster",
+      "name": "Test",
       "script": "./.server/Index.js",
       "exec_interpreter": "node",
       "exec_mode": "cluster",

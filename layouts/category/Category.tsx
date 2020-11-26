@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col, Container } from 'react-bootstrap';
 import Pagination from '../shared/Pagination';
-import AppActions from '../../redux/actions/AppActions';
 import { getRequest } from '../../client/PageUtils';
 import ServerApi from '../../server/enums/ServerApi';
-import ResultCard from './ResultCard/ResultCard';
+import CategoryItemCard from './CategoryItemCard/CategoryItemCard';
 import { useDebounce } from '../../client/PageUtils';
 import Input from '../shared/Input';
 import styles from './Category.scss';
@@ -44,8 +43,6 @@ const CategoryLayout = (props: Props) => {
   useEffect(() => {
     if (search.length > 0) {
       setTimeout(async () => {
-        //dispatch(AppActions.setLoading(true));
-
         const [fetchError, fetchResult] = await getRequest(
           ServerApi.SEARCH_DATA_FOR_CATEGORY,
           {
@@ -59,8 +56,6 @@ const CategoryLayout = (props: Props) => {
           setCount(fetchResult.count);
           setResults(fetchResult.results);
         }
-
-        //dispatch(AppActions.setLoading(false));
       });
     } else {
       setTimeout(async () => {
@@ -82,7 +77,7 @@ const CategoryLayout = (props: Props) => {
 
   const renderResults = () =>
     results?.map((result: any, index: number) => (
-      <ResultCard key={index} category={props.name} result={result} />
+      <CategoryItemCard key={index} category={props.name} result={result} />
     ));
 
   const onPageChanged = (page: number) => {

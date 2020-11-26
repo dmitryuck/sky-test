@@ -31,4 +31,12 @@ router.get(buildRouteUrl(ServerApi.SEARCH_DATA_FOR_CATEGORY), async(req: Request
   ResponseObject.success(res, result);
 });
 
+router.get(buildRouteUrl(ServerApi.FETCH_DATA_FOR_ITEM), async(req: Request, res: Response) => {
+  const { name, category } = req.query;
+
+  const result = await ApiService.fetchDataForItem(category, name);
+
+  ResponseObject.success(res, result);
+});
+
 export default router;

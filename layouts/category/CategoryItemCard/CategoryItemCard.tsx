@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import Category from '../../../server/interfaces/Category';
-import styles from './ResultCard.scss';
+import styles from './CategoryItemCard.scss';
 
 interface Props {
   category: string;
@@ -11,8 +10,8 @@ const ResultCard = (props: Props) => {
   return (
     <Link
       href={{
-        pathname: 'category',
-        query: { name: props.result.name },
+        pathname: 'item',
+        query: { category: props.category, name: props.result.name },
       }}
     >
       <div className={styles.cardContainer}>

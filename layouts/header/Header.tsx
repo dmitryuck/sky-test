@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Row, Col, Container } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux';
-import AppActions from '../../redux/actions/AppActions';
-import ServerApi from '../../server/enums/ServerApi';
-import { getRequest } from '../../client/PageUtils';
 import styles from './Header.scss';
 
 const Header = () => {
-  const dispatch = useDispatch();
-
   return (
     <Container fluid className={styles.headerGrid}>
       <Row className={styles.headerContainer}>

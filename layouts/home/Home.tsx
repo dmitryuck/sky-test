@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col, Container } from 'react-bootstrap';
 import CategoryCard from './CategoryCard/CategoryCard';
-import Pagination from '../shared/Pagination';
-import AppActions from '../../redux/actions/AppActions';
 import styles from './Home.scss';
 import { getRequest } from '../../client/PageUtils';
 import ServerApi from '../../server/enums/ServerApi';
 
 const Home = () => {
-  const dispatch = useDispatch();
-
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
