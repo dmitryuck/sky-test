@@ -12,14 +12,14 @@ const nextRuntimeConfig = {
 };
 
 module.exports = withPlugins([
-  [withCSS, {
-    cssModules: false,
-  }],
-  [withSass, {
+  /*[withCSS, {
+    cssModules: true,
+  }],*/
+  /*[withSass, {
     cssModules: true,
     cssLoaderOptions: {
       importLoaders: 1,
       localIdentName: "[local]___[hash:base64:5]",
     }
-  }]
+  }]*/
 ], nextRuntimeConfig);

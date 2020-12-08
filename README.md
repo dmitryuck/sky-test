@@ -1,5 +1,5 @@
-npm install
-npm run build
-npm run start
+yarn install
+yarn build
+yarn start
 
 Goto http://localhost
